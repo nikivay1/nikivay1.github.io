@@ -1,6 +1,6 @@
 ---
 import ExperienceCard from './ExperienceCard.astro';
-import type { ExperienceContent } from '../i18n/content';
+import type { ExperienceContent } from '../i18n';
 import SectionHeader from './SectionHeader.astro';
 
 interface Props {
@@ -14,6 +14,6 @@ const { content } = Astro.props;
   <SectionHeader index={content.index} title={content.title} id="work-title" />
 
   <div class="border-t border-ink">
-    {content.jobs.map((job, index) => <ExperienceCard job={job} index={index} technologiesLabel={content.technologiesLabel} />)}
+    {content.jobs.map((job) => <ExperienceCard job={job} technologiesLabel={content.technologiesLabel} />)}
   </div>
 </section>
