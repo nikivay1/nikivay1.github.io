@@ -6,6 +6,8 @@ export const en = {
       title: 'Nikita Veisman — Senior Frontend Developer',
       description: 'Senior Frontend Developer specializing in React, Vue, TypeScript, performance, and scalable frontend architecture.',
       ogDescription: 'Frontend architecture, performance, and reliable product engineering.',
+      ogImage: '/og/portfolio-en.png',
+      ogImageAlt: 'Nikita Veisman — Senior Frontend Developer portfolio',
       skipToContent: 'Skip to content',
     },
     sidebar: {

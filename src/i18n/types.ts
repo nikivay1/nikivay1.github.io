@@ -20,6 +20,15 @@ export interface SocialLink {
   ariaLabel: string;
 }
 
+export interface PersonProfile {
+  name: string;
+  givenName: string;
+  familyName: string;
+  jobTitle: string;
+  username: string;
+  sameAs: readonly string[];
+}
+
 export interface SidebarContent {
   ariaLabel: string;
   backToTopLabel: string;
@@ -98,6 +107,8 @@ export interface PortfolioContent {
     title: string;
     description: string;
     ogDescription: string;
+    ogImage: string;
+    ogImageAlt: string;
     skipToContent: string;
   };
   sidebar: SidebarContent;

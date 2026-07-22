@@ -6,6 +6,8 @@ export const ru = {
       title: 'Никита Вейсман — Senior Frontend Developer',
       description: 'Senior Frontend Developer: React, Vue, TypeScript, производительность и масштабируемая frontend-архитектура.',
       ogDescription: 'Frontend-архитектура, производительность и надёжная продуктовая разработка.',
+      ogImage: '/og/portfolio-ru.png',
+      ogImageAlt: 'Портфолио Никиты Вейсмана — Senior Frontend Developer',
       skipToContent: 'Перейти к содержанию',
     },
     sidebar: {

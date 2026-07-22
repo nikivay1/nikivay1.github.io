@@ -1,3 +1,11 @@
+import type { PersonProfile } from './types';
+
+const socialLinks = [
+  { network: 'telegram', href: 'https://t.me/veismanns' },
+  { network: 'linkedin', href: 'https://www.linkedin.com/in/veismanns' },
+  { network: 'github', href: 'https://github.com/nikivay1' },
+] as const;
+
 export const shared = {
   coreSkills: ['TypeScript', 'React', 'Vue', 'Architecture', 'Performance', 'Web3'],
   toolkitGroups: [
@@ -9,11 +17,15 @@ export const shared = {
     { title: 'Tools & Protocols', skills: ['Git', 'Vite', 'Webpack', 'Buble', 'Gulp', 'Playwright', 'web3.js', 'ESLint', 'Chrome DevTools', 'REST', 'WebSocket', 'JWT', 'OAuth2', 'Jira', 'shell'] },
     { title: 'AI Tools', skills: ['Claude Code', 'Codex', 'Cursor', 'GitHub Copilot'] },
   ],
-  socialLinks: [
-    { network: 'telegram', href: 'https://t.me/veismanns' },
-    { network: 'linkedin', href: 'https://www.linkedin.com/in/veismanns' },
-    { network: 'github', href: 'https://github.com/nikivay1' },
-  ] as const,
+  socialLinks,
+  profile: {
+    name: 'Nikita Veisman',
+    givenName: 'Nikita',
+    familyName: 'Veisman',
+    jobTitle: 'Senior Frontend Developer',
+    username: 'nikivay1',
+    sameAs: socialLinks.map(({ href }) => href),
+  } satisfies PersonProfile,
   contacts: {
     email: { value: 'nikivay312@gmail.com', href: 'mailto:nikivay312@gmail.com' },
     telegram: { value: '@veismanns', href: 'https://t.me/veismanns' },
