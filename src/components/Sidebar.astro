@@ -65,10 +65,14 @@ const cvUrl = withBase('nikita-veisman-cv.pdf');
 
   <nav class="border-t border-[#4b4b47]" aria-label={content.navigationLabel}>
     {content.navigation.map((item) => (
-      <a class="group grid grid-cols-[2.5rem_1fr_auto] items-center border-b border-[#4b4b47] py-3.5 no-underline max-[641px]:py-3" href={item.href}>
-        <span class="font-mono text-[0.6rem] font-bold text-signal">{item.number}</span>
-        <span class="text-lg font-bold tracking-[-0.03em] transition-transform group-hover:translate-x-1.5">{item.label}</span>
-        <span class="text-lg text-[#77766f] group-hover:text-signal" aria-hidden="true">↘</span>
+      <a
+        class="section-nav-link group grid grid-cols-[2.5rem_1fr_auto] items-center border-b border-[#4b4b47] py-3.5 no-underline max-[641px]:py-3"
+        href={item.href}
+        data-section-link={item.href.slice(1)}
+      >
+        <span class="section-nav-number font-mono text-[0.6rem] font-bold">{item.number}</span>
+        <span class="section-nav-title text-lg font-bold tracking-[-0.03em] transition-transform group-hover:translate-x-1.5">{item.label}</span>
+        <span class="section-nav-arrow text-lg" aria-hidden="true">↘</span>
       </a>
     ))}
   </nav>

@@ -1,0 +1,76 @@
+<script>
+  const navigationLinks = Array.from(document.querySelectorAll<HTMLAnchorElement>('[data-section-link]'));
+  const sections = navigationLinks
+    .map((link) => document.getElementById(link.dataset.sectionLink ?? ''))
+    .filter((section): section is HTMLElement => section !== null);
+
+  const setActiveSection = (sectionId: string) => {
+    navigationLinks.forEach((link) => {
+      if (link.dataset.sectionLink === sectionId) {
+        link.setAttribute('aria-current', 'location');
+      } else {
+        link.removeAttribute('aria-current');
+      }
+    });
+  };
+
+  const findActiveSection = () => {
+    const viewportMarker = window.innerHeight * 0.35;
+    let activeSection = sections[0];
+
+    sections.forEach((section) => {
+      if (section.getBoundingClientRect().top <= viewportMarker) activeSection = section;
+    });
+
+    if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2) {
+      activeSection = sections.at(-1);
+    }
+
+    if (activeSection) setActiveSection(activeSection.id);
+  };
+
+  navigationLinks.forEach((link) => {
+    link.addEventListener('click', () => {
+      const sectionId = link.dataset.sectionLink;
+      if (sectionId) setActiveSection(sectionId);
+    });
+  });
+
+  if ('IntersectionObserver' in window && sections.length > 0) {
+    const navigationObserver = new IntersectionObserver(findActiveSection, {
+      rootMargin: '-34% 0px -65% 0px',
+      threshold: 0,
+    });
+
+    sections.forEach((section) => navigationObserver.observe(section));
+  }
+
+  const hashSection = window.location.hash.slice(1);
+  if (sections.some((section) => section.id === hashSection)) {
+    setActiveSection(hashSection);
+  } else {
+    findActiveSection();
+  }
+
+  const revealItems = Array.from(document.querySelectorAll<HTMLElement>('[data-reveal]'));
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!prefersReducedMotion && 'IntersectionObserver' in window) {
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+
+        entry.target.classList.add('is-revealed');
+        observer.unobserve(entry.target);
+      });
+    }, {
+      rootMargin: '0px 0px -8% 0px',
+      threshold: 0.08,
+    });
+
+    revealItems.forEach((item) => {
+      item.classList.add('reveal-ready');
+      revealObserver.observe(item);
+    });
+  }
+</script>

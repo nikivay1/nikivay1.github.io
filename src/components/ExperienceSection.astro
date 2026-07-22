@@ -11,7 +11,9 @@ const { content } = Astro.props;
 ---
 
 <section class="section-shell" id="work" aria-labelledby="work-title">
-  <SectionHeader index={content.index} title={content.title} id="work-title" />
+  <div data-reveal>
+    <SectionHeader index={content.index} title={content.title} id="work-title" />
+  </div>
 
   <div class="border-t border-ink">
     {content.jobs.map((job) => <ExperienceCard job={job} technologiesLabel={content.technologiesLabel} />)}

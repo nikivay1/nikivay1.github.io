@@ -10,12 +10,14 @@ const { content } = Astro.props;
 ---
 
 <section class="bg-signal p-[clamp(2rem,6vw,5rem)]" id="contact" aria-labelledby="contact-title">
-  <SectionHeader index={content.index} title={content.title} id="contact-title" />
-  <p class="my-[clamp(3rem,7vw,6rem)] text-[clamp(3.5rem,8vw,8rem)] leading-[0.84] font-bold tracking-[-0.075em] max-[641px]:my-10 max-[641px]:text-[clamp(2.75rem,13vw,3.5rem)]">
+  <div data-reveal>
+    <SectionHeader index={content.index} title={content.title} id="contact-title" />
+  </div>
+  <p class="my-[clamp(3rem,7vw,6rem)] text-[clamp(3.5rem,8vw,8rem)] leading-[0.84] font-bold tracking-[-0.075em] max-[641px]:my-10 max-[641px]:text-[clamp(2.75rem,13vw,3.5rem)]" data-reveal>
     {content.heading[0]}<br />{content.heading[1]} <em class="font-serif font-normal">{content.heading[2]}</em>
   </p>
 
-  <div class="border-t border-ink">
+  <div class="border-t border-ink" data-reveal>
     {content.links.map((link) => <a class="contact-link group" href={link.href} target={link.external ? '_blank' : undefined} rel={link.external ? 'noreferrer' : undefined}>
       <span class="contact-label">{link.label}</span>
       <strong class="contact-value">{link.value}</strong>
