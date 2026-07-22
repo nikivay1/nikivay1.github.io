@@ -1,6 +1,7 @@
 ---
 import LanguageSwitcher from './LanguageSwitcher.astro';
 import SocialIcon from './SocialIcon.astro';
+import ArrowIcon from './ArrowIcon.astro';
 import type { Locale, LocaleLink, SidebarContent } from '../i18n';
 import { withBase } from '../utils/url';
 
@@ -72,7 +73,9 @@ const cvUrl = withBase('nikita-veisman-cv.pdf');
       >
         <span class="section-nav-number font-mono text-[0.6rem] font-bold">{item.number}</span>
         <span class="section-nav-title text-lg font-bold tracking-[-0.03em] transition-transform group-hover:translate-x-1.5">{item.label}</span>
-        <span class="section-nav-arrow text-lg" aria-hidden="true">↘</span>
+        <span class="section-nav-arrow grid place-items-center" aria-hidden="true">
+          <ArrowIcon direction="down-right" />
+        </span>
       </a>
     ))}
   </nav>

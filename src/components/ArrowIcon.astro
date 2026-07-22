@@ -1,0 +1,23 @@
+---
+interface Props {
+  direction: 'down-right' | 'up-right';
+}
+
+const { direction } = Astro.props;
+const path = direction === 'down-right'
+  ? 'M5 5l8 8m0-8v8H5'
+  : 'M5 13l8-8M5 5h8v8';
+---
+
+<svg
+  class="size-[1.1rem]"
+  viewBox="0 0 18 18"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.6"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  aria-hidden="true"
+>
+  <path d={path}></path>
+</svg>

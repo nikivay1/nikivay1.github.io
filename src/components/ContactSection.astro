@@ -1,6 +1,7 @@
 ---
 import type { ContactContent } from '../i18n';
 import SectionHeader from './SectionHeader.astro';
+import ArrowIcon from './ArrowIcon.astro';
 
 interface Props {
   content: ContactContent;
@@ -21,7 +22,9 @@ const { content } = Astro.props;
     {content.links.map((link) => <a class="contact-link group" href={link.href} target={link.external ? '_blank' : undefined} rel={link.external ? 'noreferrer' : undefined}>
       <span class="contact-label">{link.label}</span>
       <strong class="contact-value">{link.value}</strong>
-      <b class="text-2xl" aria-hidden="true">↗</b>
+      <span class="contact-arrow grid size-8 place-items-center" aria-hidden="true">
+        <ArrowIcon direction="up-right" />
+      </span>
     </a>)}
   </div>
 </section>
